@@ -16,9 +16,14 @@
                 <div>Are you really as quick as you say?</div>
             </a>
             <div id="nav-box">
+                {% if request.user.is_authenticated %}
+                <p id="display-user">Logged in as {{request.user}}</p>
+                <a href="{% url 'logout' %}" class="header-button">Logout</a>
+                {% else %}
                 <a href="{% url 'login' %}" id="login_button" class="header-button">LOGIN</a>
                 <div class="header-divider">|</div>
                 <a href="{% url 'register' %}" id="signup_button" class="header-button">SIGN UP</a>
+                {% endif %}
             </div>
         </nav>
     </header>
