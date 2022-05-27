@@ -1,11 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.shortcuts import redirect,render
+from django.shortcuts import redirect, render
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.db.models import Q
+from .models import Score
 
 
 def loginPage(request):
@@ -28,8 +30,9 @@ def loginPage(request):
         else:
             messages.error(request, 'Username or password does not exist')
 
-    context = {'page':page}
+    context = {'page': page}
     return render(request, 'base/login_register.html', context)
+
 
 def logoutUser(request):
     logout(request)
@@ -39,7 +42,7 @@ def logoutUser(request):
 def registerPage(request):
     form = UserCreationForm()
 
-    if request.method=='POST':
+    if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
@@ -50,8 +53,22 @@ def registerPage(request):
         else:
             messages.error(request, 'An error occurred during registration')
 
-    return render(request, 'base/login_register.html', {'form':form})
+    return render(request, 'base/login_register.html', {'form': form})
+
 
 def home(request):
     context = {}
     return render(request, 'base/home.html', context)
+
+
+def scoreboard(request):
+
+    scores = Score.objects.all()
+    score_count = scores.count
+
+    context = {'scores': scores, 'score_count': score_count}
+    return render(request, 'base/Scoreboard.html', context)
+
+
+
+
