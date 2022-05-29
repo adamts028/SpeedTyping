@@ -16,20 +16,21 @@
         <input type="submit" value="Login" />
     </form>
 
-    <p>havent signed up yet?</p>
     <a href="{% url 'register' %}">Sign Up</a>
 </div>
 {% else %}
 <div>
-    <form method="POST", action="">
+    <form method="POST">
         {% csrf_token %}
-        {{form.as_p}}
-
-        <input type="submit" value="Register" />
+        <table>
+            {{form.as_table}}
+            <tr>
+                <td></td>
+                <td> <input type="submit" value="Register" /> </td>
+            </tr>
+        </table>
     </form>
 
-    <p>Already signed up?</p>
-    <a href="{% url 'login' %}">Login</a>
 </div>
 {% endif %}
 

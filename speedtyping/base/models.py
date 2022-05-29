@@ -27,5 +27,6 @@ class Score(models.Model):
     class Meta:
         ordering = ['-typing_speed']
 
-    def __str__(self):
-        return self.typing_speed
+    #def __str__(self):
+     #   return self.typing_speed
+

@@ -1,3 +1,4 @@
+import form as form
 from django.db import models
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
@@ -8,7 +9,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db.models import Q
 from .models import Score
-
+from .forms import CustomUserCreationForm
+from django.contrib.auth import forms
 
 def loginPage(request):
     page = 'login'
@@ -40,10 +42,10 @@ def logoutUser(request):
 
 
 def registerPage(request):
-    form = UserCreationForm()
+    form = CustomUserCreationForm()
 
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
             user.username = user.username.lower()
