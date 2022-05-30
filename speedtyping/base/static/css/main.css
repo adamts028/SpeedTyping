@@ -96,7 +96,7 @@ a:active { text-decoration: none; }
     width:calc(65% + 40px);
     border-radius: 20px;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 #progress{
@@ -158,6 +158,25 @@ a:active { text-decoration: none; }
     height: 30px;
     border-radius: 10px;
     padding: 10px;
+}
+
+#stats-holder{
+    width: 65%;
+    height: 100px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    color: #F5F5F5;
+}
+
+#timer{
+    font-size: 32px;
+}
+
+#wpm-count{
+    font-size: 32px;
 }
 
 .correct{

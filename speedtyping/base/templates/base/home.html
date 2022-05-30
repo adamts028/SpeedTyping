@@ -1,12 +1,17 @@
 {% extends 'main.html' %}
-
+{% load static %}
 {% block content %}
+
+    <div id="stats-holder">
+        <div id="timer">0s</div>
+        <div id="wpm-count">0WPM</div>
+    </div>
     <div id="progress-bar">
         <div id="progress"></div>
     </div>
     <div id="text-box">.</div>
-    <div id="input-box" contenteditable="True" placeholder="start typing here..." onclick="start()" oninput="take_input()"></div>
-
+    <div id="input-box" contenteditable="True" placeholder="start typing here..." onload="start()" oninput="start()"></div>
+    <script src="{% static 'java/test.js' %}"></script>
 </body>
 </html>
 {% endblock %}
