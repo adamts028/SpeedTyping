@@ -10,7 +10,8 @@
         <div id="progress"></div>
     </div>
     <div id="text-box">.</div>
-    <div id="input-box" contenteditable="True" placeholder="start typing here..." onload="start()" oninput="start()"></div>
+    <div id="input-box" contenteditable="True" placeholder="start typing here..." onclick="start()" oninput="take_input()">
+    </div>
     <script src="{% static 'java/test.js' %}"></script>
 </body>
 </html>

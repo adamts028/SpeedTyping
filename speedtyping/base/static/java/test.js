@@ -13,7 +13,6 @@
     let chars_typed = 0;
 
 
-
 function start() {
     //to be changed
     let text = "This is a text that you need to type quickly."
@@ -31,17 +30,15 @@ function start() {
     })
 
 }
-
-
 function take_input() {
-    curr_input = input_box.value;
+    curr_input = input_box.textContent;
     input_array = curr_input.split('');
 
     chars_typed++;
 
-    quote_array = quote_text.querySelectorAll('span');
-    quote_array.forEach((char, index) => {
-    let typed_char =  [index]
+    quoteSpanArray = text_box.querySelectorAll('span');
+    quoteSpanArray.forEach((char, index) => {
+    let typed_char = input_array[index]
 
         // characters not currently typed
     if (typed_char == null) {
@@ -49,7 +46,7 @@ function take_input() {
       char.classList.remove('incorrect');
 
       // correct characters
-    } else if (typedChar === char.innerText) {
+    } else if (typed_char === char.innerText) {
       char.classList.add('correct');
       char.classList.remove('incorrect');
 
@@ -65,3 +62,7 @@ function take_input() {
 
 
 }
+
+
+
+
