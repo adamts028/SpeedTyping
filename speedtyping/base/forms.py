@@ -5,7 +5,7 @@ from django.core.exceptions import ValidationError
 from django.forms.forms import Form
 
 
-class CustomUserCreationForm(UserCreationForm):
+class RegisterForm(UserCreationForm):
     username = forms.CharField(label='username', min_length=4, max_length=150)
     password1 = forms.CharField(label='password', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Confirm password', widget=forms.PasswordInput)
