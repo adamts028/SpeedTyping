@@ -6,39 +6,30 @@
 <div>
     <form method="POST", action="">
         {% csrf_token %}
+        <div class="login-box">
+            <input class="user-input" type="text" placeholder="Username" name="username">
+            <input class="user-input" type="password" placeholder="Password" name="password">
+            <div>
+                <input class="login-button" type="submit" value="Login" />
+            </div>
 
-        <label>Username:</label>
-        <input type="text" name="username" placeholder="Enter Username">
-
-        <label>Password:</label>
-        <input type="password" name="password" placeholder="Enter Password">
-
-        <input type="submit" value="Login" />
+        </div>
     </form>
-
-    <a href="{% url 'register' %}">Sign Up</a>
 </div>
 {% else %}
 <div>
     <form method="POST">
         {% csrf_token %}
-        <table>
-            {{form.as_table}}
-            <!--
-            <tr>
-                <td></td>
-                <td> <input type="submit" value="Register" /> </td>
-            </tr>
-            -->
-            <div id="login-box">
-                <input class = "user-input" placeholder="Username"></input>
-                <input class = "user-input" type="password" placeholder="Password"></input>
-                <input class = "user-input" type="password" placeholder="Confirm Password"></input>
-            <div id="login-button">Sign up</div>
-    </div>
-        </table>
-    </form>
+            <div class="login-box">
+                <input class="user-input" placeholder="Username" action="{{form.username}}">
+                <input class="user-input" placeholder="Password" type="password" action="{{form.password1}}">
+                <input class="user-input" placeholder="Confirm Password" type="password" action="{{form.password2}}">
+                <div>
+                    <input class="login-button" type="submit" value="Sign Up" />
+                </div>
 
+            </div>
+    </form>
 </div>
 {% endif %}
 

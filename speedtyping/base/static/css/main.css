@@ -28,7 +28,8 @@ a:active { text-decoration: none; }
     width: auto;
     height: 125px;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+
     margin-right: 50px;
 }
 
@@ -57,7 +58,6 @@ a:active { text-decoration: none; }
 .header-button{
     color: #f5f5f5;
     display: inline-block;
-    padding-top: 35px;
     margin-bottom: 0px;
     margin-right: 20px;
     width: 100px;
@@ -67,6 +67,7 @@ a:active { text-decoration: none; }
 
 #display-user{
     display: inline-block;
+    color: #f5f5f5;
     padding-top: 35px;
     margin-top: 0px;
     margin-right: 20px;
@@ -78,7 +79,6 @@ a:active { text-decoration: none; }
 .header-divider{
     color: #f5f5f5;
     display: inline-block;
-    padding-top: 35px;
     padding-right: 40px;
     margin-bottom: 0px;
     width: 20px;
@@ -128,7 +128,7 @@ a:active { text-decoration: none; }
     outline: none;
 }
 
-#login-box{
+.login-box{
     height: 300px;
     width: 50%;
     margin: auto;
@@ -137,24 +137,26 @@ a:active { text-decoration: none; }
 }
 
 .user-input{
-    background-color: #111111;
+    background-color: #f5;
     font-size: 18px;
-    margin-top: 70px;
+    margin-top: 30px;
     width: 60%;
     height: 15px;
     border-radius: 20px;
     padding: 10px;
     outline: none;
+
 }
 
-#login-button{
-    background-color: #111111;
+.login-button{
+    display: block;
+    background-color: #f5;
     color: black;
     font-size: 22px;
     margin: auto;
-    margin-top: 70px;
-    width: 100px;
-    height: 30px;
+    margin-top: 40px;
+    width: 150px;
+    height: 50px;
     border-radius: 10px;
     padding: 10px;
 }
