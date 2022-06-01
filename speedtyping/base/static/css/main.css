@@ -1,5 +1,4 @@
 body{
-    color: #a6a6a6;
     background-color: #242424;
     margin: 0px;
     font-family: Arial, Helvetica, sans-serif;
@@ -68,7 +67,6 @@ a:active { text-decoration: none; }
 #display-user{
     display: inline-block;
     padding-top: 35px;
-    margin-bottom: 0px;
     margin-top: 0px;
     margin-right: 20px;
     width: 200px;
@@ -97,14 +95,14 @@ a:active { text-decoration: none; }
     width:calc(65% + 40px);
     border-radius: 20px;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 #progress{
     background-color:green;
     border-radius: 20px;
     height: 100%;
-    width: 30%;
+    width: 0%;
 }
 
 #text-box{
@@ -119,7 +117,6 @@ a:active { text-decoration: none; }
 }
 
 #input-box{
-    color: black;
     background-color: #a6a6a6;
     height: 60px;
     width: 65%;
@@ -139,7 +136,7 @@ a:active { text-decoration: none; }
 }
 
 .user-input{
-    background-color: #a6a6a6;
+    background-color: #111111;
     font-size: 18px;
     margin-top: 70px;
     width: 60%;
@@ -150,7 +147,7 @@ a:active { text-decoration: none; }
 }
 
 #login-button{
-    background-color: #a6a6a6;
+    background-color: #111111;
     color: black;
     font-size: 22px;
     margin: auto;
@@ -159,5 +156,33 @@ a:active { text-decoration: none; }
     height: 30px;
     border-radius: 10px;
     padding: 10px;
+}
+
+#stats-holder{
+    width: 65%;
+    height: 100px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    color: #F5F5F5;
+}
+
+#timer{
+    font-size: 32px;
+}
+
+#wpm-count{
+    font-size: 32px;
+}
+
+.correct{
+    color: green;
+}
+
+.incorrect{
+    color: red;
+    text-decoration: underline;
 }
 
