@@ -4,37 +4,73 @@
     let time_count = document.querySelector("#timer")
     let wpm_count = document.querySelector("#wpm-count")
 
-    let time = 0;
-    let timer = null;
+
+    let timer = 0;
+    let text = "";
     let wpm = 0;
     let accuracy = 0;
     let errors = 0;
-    let total_errors = 0;
     let chars_typed = 0;
+    let correct_chars = 0
+    let game_in_progress = false;
 
 
 function start() {
-    //to be changed
-    let text = "This is a text that you need to type quickly."
 
-    clearInterval(timer);
-    //timer = setInterval(updateTimer, 1000);
+    if (!game_in_progress) {
 
-    //Add text
-    text_box.textContent = null;
+        game_in_progress = true
 
-    text.split('').forEach(char => {
-        const charSpan = document.createElement('span')
-        charSpan.innerText = char
-        text_box.appendChild(charSpan)
-    })
+        //to be changed
+        text = "This is a text that you need to type quickly."
 
+        clearInterval(timer);
+        timer = setInterval(updateTimer_WPM, 1000);
+
+        reset_values();
+
+        //Add text
+        text_box.textContent = null;
+
+        text.split('').forEach(char => {
+            const charSpan = document.createElement('span')
+            charSpan.innerText = char
+            text_box.appendChild(charSpan)
+        })
+    }
 }
+
+function updateTimer_WPM() {
+    if (game_in_progress)
+    {
+        timer++;
+        time_count.textContent = timer + "s";
+
+        wpm = Math.round((((correct_chars / 5) / timer) * 60));
+        wpm_count.textContent = wpm + "WPM";
+    }
+}
+
+
+function reset_values() {
+    timer = 0;
+    wpm = 0;
+    accuracy = 0;
+    errors = 0;
+    total_errors = 0;
+    chars_typed = 0;
+    correct_chars = 0
+    input_box.textContent = "";
+    text_box.textContent = "Click on the area below to start";
+}
+
 function take_input() {
     curr_input = input_box.textContent;
     input_array = curr_input.split('');
 
     chars_typed++;
+
+    errors = 0;
 
     quoteSpanArray = text_box.querySelectorAll('span');
     quoteSpanArray.forEach((char, index) => {
@@ -42,27 +78,41 @@ function take_input() {
 
         // characters not currently typed
     if (typed_char == null) {
-      char.classList.remove('correct');
-      char.classList.remove('incorrect');
+        char.classList.remove('correct');
+        char.classList.remove('incorrect');
 
       // correct characters
     } else if (typed_char === char.innerText) {
-      char.classList.add('correct');
-      char.classList.remove('incorrect');
+        char.classList.add('correct');
+        char.classList.remove('incorrect');
 
       // incorrect characters
     } else {
-      char.classList.add('incorrect');
-      char.classList.remove('correct');
+        char.classList.add('incorrect');
+        char.classList.remove('correct');
 
-      // increment number of errors
-      errors++;
-      }
-});
+          // increment number of errors
+        errors++;
+    }
+    });
 
+    correct_chars = (chars_typed - errors);
+
+    if (curr_input.length == text.length) {
+        finish()
+    }
+
+    progress.style.width= ((curr_input.length/text.length)*100) + "%"
 
 }
 
+function finish(){
+    game_in_progress = false
+    clearInterval(timer);
+    input_box.textContent = ""
+    input_box.contentEditable = false;
+    input_box.contentEditable = true;
+}
 
 
 
