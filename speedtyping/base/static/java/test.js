@@ -61,6 +61,7 @@ function reset_values() {
     chars_typed = 0;
     correct_chars = 0
     input_box.textContent = "";
+    progress.style.width= "0%"
     text_box.textContent = "Click on the area below to start";
 }
 
@@ -96,7 +97,7 @@ function take_input() {
     }
     });
 
-    correct_chars = (chars_typed - errors);
+    correct_chars = (input_array.length - errors);
 
     if (curr_input.length == text.length) {
         finish()
