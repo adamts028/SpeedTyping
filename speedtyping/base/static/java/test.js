@@ -5,7 +5,8 @@
     let wpm_count = document.querySelector("#wpm-count")
 
 
-    let timer = 0;
+    let timer = null;
+    let time = 0;
     let text = "";
     let wpm = 0;
     let accuracy = 0;
@@ -25,7 +26,10 @@ function start() {
         text = "This is a text that you need to type quickly."
 
         clearInterval(timer);
-        timer = setInterval(updateTimer_WPM, 1000);
+        timer = null;
+        if (!timer) {
+            timer = setInterval(updateTimer_WPM, 1000);
+        }
 
         reset_values();
 
@@ -43,17 +47,17 @@ function start() {
 function updateTimer_WPM() {
     if (game_in_progress)
     {
-        timer++;
-        time_count.textContent = timer + "s";
+        time++;
+        time_count.textContent = time + "s";
 
-        wpm = Math.round((((correct_chars / 5) / timer) * 60));
+        wpm = Math.round((((correct_chars / 5) / time) * 60));
         wpm_count.textContent = wpm + "WPM";
     }
 }
 
 
 function reset_values() {
-    timer = 0;
+    time = 0;
     wpm = 0;
     accuracy = 0;
     errors = 0;
@@ -110,6 +114,7 @@ function take_input() {
 function finish(){
     game_in_progress = false
     clearInterval(timer);
+    timer = null;
     input_box.textContent = ""
     input_box.contentEditable = false;
     input_box.contentEditable = true;
