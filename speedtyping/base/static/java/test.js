@@ -1,10 +1,11 @@
+//Declare variables that link to html elements
     let text_box = document.querySelector("#text-box")
     let input_box = document.querySelector("#input-box");
     let progress = document.querySelector("#progress")
     let time_count = document.querySelector("#timer")
     let wpm_count = document.querySelector("#wpm-count")
 
-
+//Declare and initialise global variables
     let timer = null;
     let time = 0;
     let text = "";
@@ -15,7 +16,7 @@
     let correct_chars = 0
     let game_in_progress = false;
 
-
+//Prepares typing test when started
 function start() {
 
     if (!game_in_progress) {
@@ -44,6 +45,7 @@ function start() {
     }
 }
 
+//Updates the timer calculates
 function updateTimer_WPM() {
     if (game_in_progress)
     {
@@ -55,7 +57,7 @@ function updateTimer_WPM() {
     }
 }
 
-
+//Reset variables to default values
 function reset_values() {
     time = 0;
     wpm = 0;
@@ -69,6 +71,7 @@ function reset_values() {
     text_box.textContent = "Click on the area below to start";
 }
 
+//Process input
 function take_input() {
     curr_input = input_box.textContent;
     input_array = curr_input.split('');
@@ -81,17 +84,15 @@ function take_input() {
     quoteSpanArray.forEach((char, index) => {
     let typed_char = input_array[index]
 
-        // characters not currently typed
+    //Change colour if correct/incorrect
     if (typed_char == null) {
         char.classList.remove('correct');
         char.classList.remove('incorrect');
 
-      // correct characters
     } else if (typed_char === char.innerText) {
         char.classList.add('correct');
         char.classList.remove('incorrect');
 
-      // incorrect characters
     } else {
         char.classList.add('incorrect');
         char.classList.remove('correct');
@@ -103,14 +104,17 @@ function take_input() {
 
     correct_chars = (input_array.length - errors);
 
+    //Check if finished
     if (curr_input.length == text.length) {
         finish()
     }
 
+    //Update progress bar
     progress.style.width= ((curr_input.length/text.length)*100) + "%"
 
 }
 
+//Finish game state
 function finish(){
     game_in_progress = false
     clearInterval(timer);
