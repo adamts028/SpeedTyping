@@ -2,10 +2,12 @@
 
 {% block content %}
 
+<!--If statement to display either Login page or signup-->
 {% if page == 'login' %}
 <div>
     <form method="POST", action="">
         {% csrf_token %}
+        <!--Login form-->
         <div class="login-box">
             <input class="user-input" type="text" placeholder="Username" name="username">
             <input class="user-input" type="password" placeholder="Password" name="password">
@@ -20,6 +22,7 @@
 <div>
     <form method="POST">
         {% csrf_token %}
+        <!--Signup form that only works with no closing-->
             <div class="login-box">
                 <input class="user-input" placeholder="Username" action="{{form.username}}
                 <input class="user-input" placeholder="Password" type="password" action="{{form.password1}}
