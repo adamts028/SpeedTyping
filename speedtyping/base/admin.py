@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Topic, Message
+from .models import Score
 
-admin.site.register(Topic)
-admin.site.register(Message)
+# registers score in the admin database so admins can see/modify results
+admin.site.register(Score)

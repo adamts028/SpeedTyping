@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div>
+    <h5>{{score_count}} scores logged</h5>
+    <hr>
+    <!--Display scores from database-->
+    <div>
+        {% for score in scores %}
+            <div>
+                <span>Name: {{score.name.username}} Speed: {{score.typing_speed}} Accuracy: {{score.accuracy}}</span>
+
+                <hr>
+            </div>
+        {% endfor %}
+    </div>
+
+
+
+
+</div>
+{% endblock %}
