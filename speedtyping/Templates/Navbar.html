@@ -1,12 +1,16 @@
 {% load static %}
 
+<!--Link css file-->
 <link rel="stylesheet" href="{% static 'css/main.css' %}">
 <header>
         <nav>
+            <!--Title-->
             <a id="logo-box" href="{% url 'home' %}">
                 <div id = "title">Typing Test</div>
                 <div>Are you really as quick as you say?</div>
             </a>
+
+            <!--Display Login/Sign up button or logout if signed in-->
             <div id="nav-box">
                 {% if request.user.is_authenticated %}
                 <p id="display-user">Logged in as {{request.user}}</p>
