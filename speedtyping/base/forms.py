@@ -5,11 +5,15 @@ from django.core.exceptions import ValidationError
 from django.forms.forms import Form
 
 
+# custom form built off of prebuilt django form
 class RegisterForm(UserCreationForm):
     username = forms.CharField(label='username', min_length=4, max_length=150)
     password1 = forms.CharField(label='password', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Confirm password', widget=forms.PasswordInput)
 
+    # makes all characters lowercase so users can't make duplicate accounts with different capitalisations.
+    # also, then checks username with names already in the database
+    # these functions validate the form when the corresponding function is called in the views file
     def username_clean(self):
         username = self.cleaned_data['username'].lower()
         new = User.objects.filter(username=username)
