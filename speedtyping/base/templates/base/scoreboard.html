@@ -5,14 +5,32 @@
     <h5>{{score_count}} scores logged</h5>
     <hr>
     <!--Display scores from database-->
-    <div>
-        {% for score in scores %}
-            <div>
-                <span>Name: {{score.name.username}} Speed: {{score.typing_speed}} Accuracy: {{score.accuracy}}</span>
+    <div id="text-box">
+        <h3 align="center">Leaderboard</h3>
+        <div align="center">
+             <a class="header-button" >Daily</a>
+            <div class="header-divider">|</div>
+            <a class="header-button">Weekly</a>
+            <div class="header-divider">|</div>
+            <a class="header-button" >All-Time</a>
+        </div>
 
-                <hr>
-            </div>
-        {% endfor %}
+            <table>
+                <tr>
+                    <th>Username</th>
+                    <th>Accuracy</th>
+                    <th>WPM</th>
+                </tr>
+                {% for score in scores %}
+                <tr>
+                    <td>{{score.name.username}} </td>
+                    <td>{{score.accuracy}} </td>
+                    <td>{{score.typing_speed}}</td>
+                </tr>
+                 {% endfor %}
+                <!-- <span>{{score.name.username}} {{score.typing_speed}} Accuracy: {{score.accuracy}}--></span>
+            </table>
+
     </div>
 
 
