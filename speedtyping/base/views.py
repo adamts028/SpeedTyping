@@ -68,3 +68,17 @@ def scoreboard(request):
 
     context = {'scores': scores, 'score_count': score_count}
     return render(request, 'base/Scoreboard.html', context)
+
+def scoreboard_daily(request):
+    scores = Score.objects.all()
+    score_count = scores.count
+
+    context = {'scores': scores, 'score_count': score_count}
+    return render(request, 'base/Scoreboard.html', context)
+
+def scoreboard_weekly(request):
+    scores = Score.objects.all()
+    score_count = scores.count
+
+    context = {'scores': scores, 'score_count': score_count}
+    return render(request, 'base/Scoreboard.html', context)

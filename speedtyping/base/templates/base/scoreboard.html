@@ -1,18 +1,21 @@
 {% extends 'main.html' %}
 
 {% block content %}
-<div>
-    <h5>{{score_count}} scores logged</h5>
-    <hr>
+
+{% if page == 'scoreboard' %}
+
+<div id="leaderboard-container">
     <!--Display scores from database-->
-    <div id="text-box">
+    <div class="ltext-box">
         <h3 align="center">Leaderboard</h3>
         <div align="center">
-             <a class="header-button" >Daily</a>
-            <div class="header-divider">|</div>
-            <a class="header-button">Weekly</a>
-            <div class="header-divider">|</div>
-            <a class="header-button" >All-Time</a>
+
+             <a class="leaderboard-button" >Daily</a>
+            <div class="leaderboard-divider">|</div>
+            <a class="leaderboard-button">Weekly</a>
+            <div class="leaderboard-divider">|</div>
+            <a class="leaderboard-button" >All-Time</a>
+            <h5 class="scores-logged">{{score_count}} scores logged</h5>
         </div>
 
             <table>
@@ -33,8 +36,18 @@
 
     </div>
 
-
-
-
 </div>
+
+{% elif page == 'scoreboard_daily' %}
+
+{% elif page == 'scoreboard_weekly' %}
+
+{% else %}
+<p>An error has occurred loading this page please try again</p>
+
+{% endif %}
+
 {% endblock %}
+<footer>
+
+</footer>
