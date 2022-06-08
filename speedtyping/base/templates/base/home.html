@@ -17,7 +17,30 @@
 
     <a id="scoreboard-button" href="{% url 'scoreboard' %}">Scoreboard</a>
     <!--Links to js file-->
-    <script src="{% static 'java/test.js' %}"></script>
+    <!--<script type="text/javascript">
+
+        let text_box = document.querySelector("#text-box")
+        let input_box = document.querySelector("#input-box")
+
+        function start() {
+            var temp = "{{texts}}"
+
+            a = temp
+
+            const htmlEntities = { "&#x27;": ""};
+            text = a.replace(/(&#x27;)/g, match => htmlEntities[match]);
+
+            text_box.textContent = text
+
+
+
+        }
+    </script>-->
+
+    <script src="{% static 'java/test.js' %}">
+
+
+    </script>
 </body>
 </html>
 {% endblock %}

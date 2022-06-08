@@ -1,20 +1,20 @@
 //Declare variables that link to html elements
     let text_box = document.querySelector("#text-box")
-    let input_box = document.querySelector("#input-box");
+    let input_box = document.querySelector("#input-box")
     let progress = document.querySelector("#progress")
     let time_count = document.querySelector("#timer")
     let wpm_count = document.querySelector("#wpm-count")
 
 //Declare and initialise global variables
-    let timer = null;
-    let time = 0;
-    let text = "";
-    let wpm = 0;
-    let accuracy = 0;
-    let errors = 0;
-    let chars_typed = 0;
+    let timer = null
+    let time = 0
+    let text = ""
+    let wpm = 0
+    let accuracy = 0
+    let errors = 0
+    let chars_typed = 0
     let correct_chars = 0
-    let game_in_progress = false;
+    let game_in_progress = false
 
 //Prepares typing test when started
 function start() {
@@ -23,8 +23,19 @@ function start() {
 
         game_in_progress = true
 
+
+        var temp = "{{texts}}"
+
+        var a = temp
+
+        const htmlEntities = { "&#x27;": ""};
+
+        text = a.replace(/(&#x27;)/g, match => htmlEntities[match]);
+
+        text_box.textContent = text
+
         //to be changed
-        text = "This is a text that you need to type quickly."
+        //text = "This is a text that you need to type quickly."
 
         clearInterval(timer);
         timer = null;
@@ -59,16 +70,16 @@ function updateTimer_WPM() {
 
 //Reset variables to default values
 function reset_values() {
-    time = 0;
-    wpm = 0;
-    accuracy = 0;
-    errors = 0;
-    total_errors = 0;
-    chars_typed = 0;
+    time = 0
+    wpm = 0
+    accuracy = 0
+    errors = 0
+    total_errors = 0
+    chars_typed = 0
     correct_chars = 0
-    input_box.textContent = "";
+    input_box.textContent = ""
     progress.style.width= "0%"
-    text_box.textContent = "Click on the area below to start";
+    text_box.textContent = "Click on the area below to start"
 }
 
 //Process input
@@ -102,7 +113,7 @@ function take_input() {
     }
     });
 
-    correct_chars = (input_array.length - errors);
+    correct_chars = (input_array.length - errors)
 
     //Check if finished
     if (curr_input.length == text.length) {
@@ -117,11 +128,11 @@ function take_input() {
 //Finish game state
 function finish(){
     game_in_progress = false
-    clearInterval(timer);
-    timer = null;
+    clearInterval(timer)
+    timer = null
     input_box.textContent = ""
-    input_box.contentEditable = false;
-    input_box.contentEditable = true;
+    input_box.contentEditable = false
+    input_box.contentEditable = true
 }
 
 

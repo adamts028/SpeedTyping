@@ -56,10 +56,14 @@ def registerPage(request):
 
     return render(request, 'base/login_register.html', {'form': form})
 
+
 # send user back to the home page...
 def home(request):
-    context = {}
+    texts = ['Text 1', 'Text 2']
+
+    context = {'texts': texts}
     return render(request, 'base/home.html', context)
+
 
 # collects and displays all scored save in the database
 def scoreboard(request):
