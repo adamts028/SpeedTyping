@@ -187,12 +187,11 @@ a:active { text-decoration: none; }
     text-decoration: underline;
 }
 
-#scoreboard-button{
+#scoreboard-button, #retry{
     display: block;
     background-color: #a6a6a6;
     color: black;
     font-size: 22px;
-    margin: auto;
     margin-top: 30px;
     width: 250px;
     height: 30px;
@@ -201,4 +200,7 @@ a:active { text-decoration: none; }
     text-align: center;
 }
 
+#retry{
+    display: none;
+}
 

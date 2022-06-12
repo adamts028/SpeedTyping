@@ -4,6 +4,7 @@
     let progress = document.querySelector("#progress")
     let time_count = document.querySelector("#timer")
     let wpm_count = document.querySelector("#wpm-count")
+    let retry_box = document.querySelector("#retry")
 
 //Declare and initialise global variables
     let timer = null
@@ -23,27 +24,17 @@ function start() {
 
         game_in_progress = true
 
-
-        var temp = "{{texts}}"
-
-        var a = temp
-
-        const htmlEntities = { "&#x27;": ""};
-
-        text = a.replace(/(&#x27;)/g, match => htmlEntities[match]);
-
-        text_box.textContent = text
-
-        //to be changed
-        //text = "This is a text that you need to type quickly."
+        text = text_box.textContent;
 
         clearInterval(timer);
         timer = null;
+
         if (!timer) {
             timer = setInterval(updateTimer_WPM, 1000);
         }
 
-        reset_values();
+        input_box.textContent = ""
+        //reset_values();
 
         //Add text
         text_box.textContent = null;
@@ -69,7 +60,7 @@ function updateTimer_WPM() {
 }
 
 //Reset variables to default values
-function reset_values() {
+/*function reset_values() {
     time = 0
     wpm = 0
     accuracy = 0
@@ -80,7 +71,7 @@ function reset_values() {
     input_box.textContent = ""
     progress.style.width= "0%"
     text_box.textContent = "Click on the area below to start"
-}
+}*/
 
 //Process input
 function take_input() {
@@ -133,6 +124,7 @@ function finish(){
     input_box.textContent = ""
     input_box.contentEditable = false
     input_box.contentEditable = true
+    retry_box.style.display = "block";
 }
 
 

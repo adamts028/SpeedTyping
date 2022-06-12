@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.db.models import Q
 from .models import Score
 from .forms import RegisterForm
+import random
 
 
 # login view checks entered username and password against database and
@@ -59,9 +60,11 @@ def registerPage(request):
 
 # send user back to the home page...
 def home(request):
-    texts = ['Text 1', 'Text 2']
+    # will get from database
+    texts = ['This is a text that you need to type quickly.', 'This is also a text that you need to type quickly.']
 
-    context = {'texts': texts}
+    text = texts[random.randint(0, len(texts)-1)]
+    context = {"text": text}
     return render(request, 'base/home.html', context)
 
 
