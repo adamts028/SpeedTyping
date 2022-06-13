@@ -118,12 +118,10 @@ function take_input() {
 
 //Finish game state
 function finish(){
-    game_in_progress = false
     clearInterval(timer)
     timer = null
     input_box.textContent = ""
     input_box.contentEditable = false
-    input_box.contentEditable = true
     retry_box.style.display = "block";
 }
 
