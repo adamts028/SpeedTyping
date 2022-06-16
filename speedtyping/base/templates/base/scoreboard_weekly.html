@@ -8,6 +8,7 @@
         <!--Display scores from database-->
         <div class="ltext-box">
             <h3 align="center">Leaderboard</h3>
+            <h5>Time: {{time}}</h5>
             <div align="center">
 
                  <a href="{% url 'scoreboard_daily' %}" class="leaderboard-button" >Daily</a>
@@ -23,15 +24,17 @@
                         <th>Username</th>
                         <th>Accuracy</th>
                         <th>WPM</th>
+                        <th>Date</th>
                     </tr>
                     {% for score in scores %}
-                        {% if score.created == datetime.now() %}
+
                             <tr>
                                 <td>{{score.name.username}} </td>
                                 <td>{{score.accuracy}} </td>
                                 <td>{{score.typing_speed}}</td>
+                                <td>{{score.created}}</td>
                             </tr>
-                        {% endif %}
+
                     {% endfor %}
                     <!-- <span>{{score.name.username}} {{score.typing_speed}} Accuracy: {{score.accuracy}}--></span>
                 </table>
