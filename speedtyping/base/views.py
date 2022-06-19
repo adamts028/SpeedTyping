@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db.models import Q
-from .models import Score
+from .models import Score, Text
 from .forms import RegisterForm
 import random
 
@@ -59,10 +59,10 @@ def registerPage(request):
 
 
 # send user back to the home page...
+# gets random paragraph from database for test
 def home(request):
-    # will get from database
-    texts = ['This is a text that you need to type quickly.', 'This is also a text that you need to type quickly.']
 
+    texts = list(Text.objects.all().values_list('paragraph', flat=True))
     text = texts[random.randint(0, len(texts)-1)]
     context = {"text": text}
     return render(request, 'base/home.html', context)
