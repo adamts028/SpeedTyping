@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db.models import Q
 from django.utils import timezone
-
+import random
 from .models import Score, Text
 from .forms import RegisterForm
 from django.utils.timezone import now
