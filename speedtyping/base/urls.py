@@ -9,5 +9,7 @@ urlpatterns = [
     path('register/', views.registerPage, name='register'),
     path('home/', views.home, name='home'),
     path('scoreboard/', views.scoreboard, name='scoreboard'),
+    path('scoreboard_daily/', views.scoreboard_daily, name='scoreboard_daily'),
+    path('scoreboard_weekly/', views.scoreboard_weekly, name='scoreboard_weekly'),
 
 ]

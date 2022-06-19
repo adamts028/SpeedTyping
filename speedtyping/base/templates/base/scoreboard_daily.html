@@ -9,6 +9,7 @@
         <div class="ltext-box">
             <h3 align="center">Leaderboard</h3>
             <h5>Time: {{time}}</h5>
+
             <div align="center">
 
                  <a href="{% url 'scoreboard_daily' %}" class="leaderboard-button" >Daily</a>
@@ -32,7 +33,6 @@
                         <td>{{score.accuracy}} </td>
                         <td>{{score.typing_speed}}</td>
                         <td>{{score.created}}</td>
-
 
                     </tr>
                      {% endfor %}

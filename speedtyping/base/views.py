@@ -4,9 +4,15 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db.models import Q
+from django.utils import timezone
+
 from .models import Score
 from .forms import RegisterForm
+from django.utils.timezone import now
+from datetime import datetime, timedelta, time, date
 
+today = datetime.now().date()
+weekly = today - timedelta(days=7)
 
 # login view checks entered username and password against database and
 # either logs you in or return error if something went wrong
@@ -33,10 +39,12 @@ def loginPage(request):
     context = {'page': page}
     return render(request, 'base/login_register.html', context)
 
+
 # django logout function
 def logoutUser(request):
     logout(request)
     return redirect('home')
+
 
 # checks if account is already in database, and contain all necessary  and valid characters
 # automatically logs you in when you successfully create an account
@@ -56,15 +64,38 @@ def registerPage(request):
 
     return render(request, 'base/login_register.html', {'form': form})
 
+
 # send user back to the home page...
 def home(request):
     context = {}
     return render(request, 'base/home.html', context)
 
+
 # collects and displays all scored save in the database
 def scoreboard(request):
     scores = Score.objects.all()
     score_count = scores.count
+    time=datetime.now()
 
-    context = {'scores': scores, 'score_count': score_count}
-    return render(request, 'base/Scoreboard.html', context)
+    context = {'scores': scores, 'score_count': score_count,'time':time}
+    return render(request, 'base/scoreboard.html', context)
+
+
+def scoreboard_daily(request):
+
+    scores = Score.objects.filter(created__gte=date.today())
+    score_count = scores.count
+    time=datetime.now()
+    context = {'scores': scores, 'score_count': score_count,'time':time}
+    return render(request, 'base/scoreboard_daily.html', context)
+
+
+def scoreboard_weekly(request):
+
+
+    scores = Score.objects.filter(created__gte=weekly)
+    score_count = scores.count
+    time=datetime.now()
+
+    context = {'scores': scores, 'score_count': score_count,'time':time}
+    return render(request, 'base/scoreboard_weekly.html', context)
