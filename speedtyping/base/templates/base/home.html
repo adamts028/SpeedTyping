@@ -10,14 +10,42 @@
     <div id="progress-bar">
         <div id="progress"></div>
     </div>
-    <div id="text-box">Click on the area below to start</div>
+    <div id="text-box">{{text}}</div>
 
     <!--Javascript called to run the test-->
-    <div id="input-box" contenteditable="True"  onclick="start()" oninput="take_input()"></div>
+    <div id="input-box" contenteditable="True"  onclick="start()" oninput="take_input()">Click here to start</div>
 
-    <a id="scoreboard-button" href="{% url 'scoreboard' %}">Scoreboard</a>
+    <div style="display:flex; flex-direction:colomn; width:calc(65% + 40px); margin: auto; justify-content:space-between;">
+        <a id="scoreboard-button" href="{% url 'scoreboard' %}">Scoreboard</a>
+        <a id="retry" href="{% url 'home' %}">Retry</a>
+    </div>
+
+
     <!--Links to js file-->
-    <script src="{% static 'java/test.js' %}"></script>
+    <!--<script type="text/javascript">
+
+        let text_box = document.querySelector("#text-box")
+        let input_box = document.querySelector("#input-box")
+
+        function start() {
+            var temp = "{{texts}}"
+
+            a = temp
+
+            const htmlEntities = { "&#x27;": ""};
+            text = a.replace(/(&#x27;)/g, match => htmlEntities[match]);
+
+            text_box.textContent = text
+
+
+
+        }
+    </script>-->
+
+    <script src="{% static 'java/test.js' %}">
+
+
+    </script>
 </body>
 </html>
 {% endblock %}

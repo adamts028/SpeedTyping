@@ -1,0 +1,58 @@
+@media (max-width: 740px){
+
+    nav{
+        height:110px;
+    }
+
+
+    body{
+        font-size:16px;
+    }
+
+    #logo-box{
+        font-size:16px;
+
+    }
+
+    #text-box{
+        font-size:18px;
+        height: 300px;
+        margin-top:20px;
+    }
+
+    #input-box{
+        margin-top:20px;
+    }
+
+    #title{
+        font-size:26px;
+    }
+
+    .header-button{
+        font-size:16px;
+        width: 70px;
+        margin-right:10px;
+
+    }
+
+    .header-divider{
+        padding-right:10px;
+    }
+
+    #scoreboard-button, #retry{
+        width:175px;
+        height:20px;
+        font-size:16px;
+        margin-top:20px;
+    }
+
+    #stats-holder{
+        font-size:24px;
+        height:70px;
+    }
+
+
+
+
+}
+

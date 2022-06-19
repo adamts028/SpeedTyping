@@ -17,3 +17,7 @@ class Score(models.Model):
     class Meta:
         ordering = ['-typing_speed']
 
+class Text(models.Model):
+    paragraph = models.CharField(max_length=500)
+
+

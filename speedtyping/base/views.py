@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.db.models import Q
 from django.utils import timezone
 
-from .models import Score
+from .models import Score, Text
 from .forms import RegisterForm
 from django.utils.timezone import now
 from datetime import datetime, timedelta, time, date
@@ -66,8 +66,12 @@ def registerPage(request):
 
 
 # send user back to the home page...
+# gets random paragraph from database for test
 def home(request):
-    context = {}
+
+    texts = list(Text.objects.all().values_list('paragraph', flat=True))
+    text = texts[random.randint(0, len(texts)-1)]
+    context = {"text": text}
     return render(request, 'base/home.html', context)
 
 
