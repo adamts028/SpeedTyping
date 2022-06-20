@@ -70,7 +70,13 @@ def registerPage(request):
 def home(request):
 
     texts = list(Text.objects.all().values_list('paragraph', flat=True))
-    text = texts[random.randint(0, len(texts)-1)]
+    text = ""
+
+    if len(texts) == 0:
+        text = "No paragraphs have been created for this application. Please contact an admin to get them created."
+    else:
+        text = texts[random.randint(0, len(texts)-1)]
+
     context = {"text": text}
     return render(request, 'base/home.html', context)
 
