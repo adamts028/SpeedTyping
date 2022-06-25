@@ -10,6 +10,7 @@ from .models import Score, Text
 from .forms import RegisterForm
 from django.utils.timezone import now
 from datetime import datetime, timedelta, time, date
+from django.views.decorators.csrf import csrf_exempt
 
 today = datetime.now().date()
 weekly = today - timedelta(days=7)
@@ -67,7 +68,15 @@ def registerPage(request):
 
 # send user back to the home page...
 # gets random paragraph from database for test
+@csrf_exempt
 def home(request):
+
+    #Save score if requested
+    if request.method == 'POST':
+        if request.user.is_authenticated:
+            #s = Score(accuracy=10, name=request.user, typing_speed=10)
+            s = Score(accuracy=request.POST['accuracy'], name=request.user, typing_speed=request.POST['wpm'])
+            s.save()
 
     texts = list(Text.objects.all().values_list('paragraph', flat=True))
     text = ""
