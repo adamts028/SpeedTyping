@@ -4,9 +4,16 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db.models import Q
-from .models import Score
+from django.utils import timezone
+import random
+from .models import Score, Text
 from .forms import RegisterForm
+from django.utils.timezone import now
+from datetime import datetime, timedelta, time, date
+from django.views.decorators.csrf import csrf_exempt
 
+today = datetime.now().date()
+weekly = today - timedelta(days=7)
 
 # login view checks entered username and password against database and
 # either logs you in or return error if something went wrong
@@ -33,10 +40,12 @@ def loginPage(request):
     context = {'page': page}
     return render(request, 'base/login_register.html', context)
 
+
 # django logout function
 def logoutUser(request):
     logout(request)
     return redirect('home')
+
 
 # checks if account is already in database, and contain all necessary  and valid characters
 # automatically logs you in when you successfully create an account
@@ -56,15 +65,56 @@ def registerPage(request):
 
     return render(request, 'base/login_register.html', {'form': form})
 
+
 # send user back to the home page...
+# gets random paragraph from database for test
+@csrf_exempt
 def home(request):
-    context = {}
+
+    #Save score if requested
+    if request.method == 'POST':
+        if request.user.is_authenticated:
+            #s = Score(accuracy=10, name=request.user, typing_speed=10)
+            s = Score(accuracy=request.POST['accuracy'], name=request.user, typing_speed=request.POST['wpm'])
+            s.save()
+
+    texts = list(Text.objects.all().values_list('paragraph', flat=True))
+    text = ""
+
+    if len(texts) == 0:
+        text = "No paragraphs have been created for this application. Please contact an admin to get them created."
+    else:
+        text = texts[random.randint(0, len(texts)-1)]
+
+    context = {"text": text}
     return render(request, 'base/home.html', context)
+
 
 # collects and displays all scored save in the database
 def scoreboard(request):
     scores = Score.objects.all()
     score_count = scores.count
+    time=datetime.now()
 
-    context = {'scores': scores, 'score_count': score_count}
-    return render(request, 'base/Scoreboard.html', context)
+    context = {'scores': scores, 'score_count': score_count,'time':time}
+    return render(request, 'base/scoreboard.html', context)
+
+
+def scoreboard_daily(request):
+
+    scores = Score.objects.filter(created__gte=date.today())
+    score_count = scores.count
+    time=datetime.now()
+    context = {'scores': scores, 'score_count': score_count,'time':time}
+    return render(request, 'base/scoreboard_daily.html', context)
+
+
+def scoreboard_weekly(request):
+
+
+    scores = Score.objects.filter(created__gte=weekly)
+    score_count = scores.count
+    time=datetime.now()
+
+    context = {'scores': scores, 'score_count': score_count,'time':time}
+    return render(request, 'base/scoreboard_weekly.html', context)
