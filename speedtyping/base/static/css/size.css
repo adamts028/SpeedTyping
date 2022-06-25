@@ -1,14 +1,16 @@
-@media (max-width: 740px){
+@media (max-width: 800px){
 
     nav{
         height:110px;
     }
 
-
     body{
         font-size:16px;
     }
 
+    #nav-box{
+        margin-right:25px;
+    }
     #logo-box{
         font-size:16px;
 
@@ -27,6 +29,12 @@
     #title{
         font-size:26px;
     }
+
+    #display-user{
+    font-size:16px;
+    margin-right: 10px;
+    width: 150px;
+}
 
     .header-button{
         font-size:16px;
@@ -51,8 +59,166 @@
         height:70px;
     }
 
+    .leaderboard-button{
+        font-size:16px;
+        width: 60px;
+        margin-right:10px;
+        margin-left:10px;
+    }
 
+    .ltext-box{
+        font-size: 14px;
+    }
 
-
+    .user-input{
+        width: 80%;
+    }
 }
 
+@media (max-width: 600px){
+    nav{
+        height:90px;
+    }
+
+    body{
+        font-size:14px;
+    }
+
+    #nav-box{
+        margin-right:10px;
+    }
+    #logo-box{
+        font-size:14px;
+
+    }
+
+    #text-box{
+        font-size:16px;
+        height: 250px;
+        margin-top:10px;
+    }
+
+    #input-box{
+        margin-top:10px;
+    }
+
+    #title{
+        font-size:20px;
+    }
+
+    #display-user{
+    font-size:14px;
+    margin-right: 10px;
+    width: 130px;
+    }
+
+    .header-button{
+        font-size:14px;
+        width: 60px;
+        margin-right:8px;
+
+    }
+
+    .header-divider{
+        padding-right:8px;
+    }
+
+    #scoreboard-button, #retry{
+        width:120px;
+        height:20px;
+        font-size:14px;
+        margin-top:10px;
+    }
+
+    #stats-holder{
+        font-size:20px;
+        height:50px;
+    }
+
+    .leaderboard-button{
+        font-size:12px;
+        width: 50px;
+        margin-right:8px;
+        margin-left:8px;
+    }
+
+    .ltext-box{
+        font-size: 12px;
+    }
+
+    .user-input{
+        width: 100%;
+        font-size:16px;
+        height: 20px;
+        padding: 5px;
+    }
+
+    .login-button{
+        font-size:16px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 500px){
+
+    body{
+        font-size:13px;
+    }
+
+    #nav-box{
+        margin-right:8px;
+    }
+    #logo-box{
+        font-size:12px;
+    }
+
+    #text-box{
+        font-size:13px;
+    }
+
+
+    #title{
+        font-size:18px;
+    }
+
+    #display-user{
+    font-size:12px;
+    margin-right: 8px;
+    width: 120px;
+    }
+
+    .header-button{
+        font-size:12px;
+        width: 50px;
+        margin-right:5px;
+    }
+
+    .header-divider{
+        padding-right:5px;
+    }
+
+    #scoreboard-button, #retry{
+        width:100px;
+        height:18px;
+        font-size:12px;
+    }
+
+    #stats-holder{
+        font-size:18px;
+    }
+
+    .leaderboard-button{
+        font-size:10px;
+        width: 45px;
+        margin-right:5px;
+        margin-left:5px;
+    }
+
+    .ltext-box{
+        font-size: 10px;
+    }
+
+    .user-input{
+        width: 90%;
+    }
+}
